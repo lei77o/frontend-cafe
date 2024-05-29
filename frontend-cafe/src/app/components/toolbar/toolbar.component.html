@@ -1,0 +1,5 @@
+<mat-toolbar color="primary">
+  @for(item of menu; track item.name) {
+    <button mat-button color="primary" ><mat-icon>{{item.icon}}</mat-icon>{{item.name}}</button>
+    }
+</mat-toolbar>
