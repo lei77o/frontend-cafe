@@ -8,8 +8,8 @@ import { MenuOption } from '../models/menu-items';
 export class MenuService {
   private menuOptions: MenuOption[] = [
     { name: 'Home', url: 'home', icon: 'home' },
-    { name: 'Payments', url: 'payment', icon: 'info' },
-    { name: 'Accounts', url: 'accounts', icon: 'contact_mail' }
+    { name: 'Acerca de', url: 'info', icon: 'info' },
+    { name: 'Contacto', url: 'contacto', icon: 'contact_mail' }
   ];
 
   constructor() { }
