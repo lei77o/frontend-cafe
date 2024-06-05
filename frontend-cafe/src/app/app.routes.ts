@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
-import { PaymentsComponent } from './pages/payments/payments.component';
-import { AccountsComponent } from './pages/accounts/accounts.component';
+import { ContactoComponent } from './pages/contacto/contacto.component';
+import { AcercaComponent } from './pages/acerca/acerca.component';
 
 export const routes: Routes = [
   {
@@ -10,16 +10,16 @@ export const routes: Routes = [
     title: 'Home',
   },
   {
-    path: 'payments',
-    component: PaymentsComponent
-,
-    title: 'Payments',
+    path: 'contacto',
+    component: ContactoComponent,
+    title: 'Contacto',
   },
   {
-    path: 'accounts',
-    component: AccountsComponent,
-    title: 'Accounts',
+    path: 'info',
+    component: AcercaComponent,
+    title: 'Acerca de',
   },
+  { path: '',   redirectTo: '/home', pathMatch: 'full' },
 ];
 
 export default routes;

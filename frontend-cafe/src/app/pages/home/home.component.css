@@ -1,0 +1,12 @@
+.home-container{
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center
+
+}
+button{
+  margin-left: 1rem;
+}
+
+
