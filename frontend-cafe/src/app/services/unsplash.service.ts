@@ -5,11 +5,11 @@ import axios from 'axios';
   providedIn: 'root'
 })
 export class UnsplashService {
-  private accessKey = '51SUWtINXTEGv3RPt3H35D6dfEzCFedWLtvc4YUgPmk'; // Replace with your Unsplash access key
+  private accessKey = '51SUWtINXTEGv3RPt3H35D6dfEzCFedWLtvc4YUgPmk';
 
   constructor() { }
 
-  async getHousePhotos(count: number = 6) {
+  async getHousePhotos(count: number = 9) {
     const response = await axios.get('https://api.unsplash.com/search/photos', {
       headers: {
         Authorization: `Client-ID ${this.accessKey}`

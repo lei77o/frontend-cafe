@@ -25,7 +25,7 @@ export class HomeComponent implements OnInit{
   }
 
   async loadHousePhotos() {
-    const photos = await this.unsplashService.getHousePhotos(6);
+    const photos = await this.unsplashService.getHousePhotos(9);
     console.log(photos);
     photos.map((photo: { id: any; alt_description: any; urls: { small: any; }; }) =>{
       this.housingLocations.push({

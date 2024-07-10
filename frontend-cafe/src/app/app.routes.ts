@@ -19,6 +19,10 @@ export const routes: Routes = [
     component: AcercaComponent,
     title: 'Acerca de',
   },
+  {
+    path: 'signals',
+    loadChildren:() => import('./signals/signals.module').then(m => m.SignalsModule)
+  },
   { path: '',   redirectTo: '/home', pathMatch: 'full' },
 ];
 

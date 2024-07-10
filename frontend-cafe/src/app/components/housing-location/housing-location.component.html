@@ -1,9 +1,9 @@
 
- <section class="container responsive-grid">
+ <section class="grid-container responsive-grid">
   @for(item of housingLocation; track item.id) {
-    <mat-card>
+    <mat-card class="cards-location">
       <mat-card-header>
-        <div mat-card-avatar class="example-header-image"><mat-icon>location_on</mat-icon></div>
+        <div mat-card-avatar class="example-header-image"><mat-icon class="location-icon">location_on</mat-icon></div>
         <mat-card-title>{{ item.name  | titlecase}}</mat-card-title>
         <mat-card-subtitle>{{ item.city }}, {{ item.state }}</mat-card-subtitle>
       </mat-card-header>

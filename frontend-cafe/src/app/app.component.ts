@@ -7,7 +7,8 @@ import { ToolbarComponent } from './components/toolbar/toolbar.component';
   standalone: true,
   imports:[
     RouterOutlet,
-     ToolbarComponent],
+    ToolbarComponent
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
