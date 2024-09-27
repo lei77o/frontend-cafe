@@ -1,0 +1,32 @@
+.grid-container {
+  padding: 24px;
+}
+
+.responsive-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(600px, 1fr));
+  gap: 24px;
+}
+
+.cards-location{
+  mat-card-title{
+    color: #001219;
+    font-size: 18px !important;
+  }
+
+  mat-card-subtitle{
+    color: #005F73;
+    font-size: 12px !important;
+  }
+
+  .location-icon{
+    color: #AE2012;
+  }
+}
+
+.align-form-fields {
+  padding: 1rem;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+}

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import {MatSidenavModule} from '@angular/material/sidenav';
 
 @Component({
@@ -9,5 +9,12 @@ import {MatSidenavModule} from '@angular/material/sidenav';
   styleUrl: './signals-layout.component.css'
 })
 export class SignalsLayoutComponent {
-  showFiller = false;
+
+  public toggleSignal = signal<boolean>(false);
+
+  toggleMenu() {
+    throw new Error('Method not implemented.');
+  }
+
+  isExpanded: boolean = true;
 }
