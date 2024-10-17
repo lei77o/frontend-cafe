@@ -1,0 +1,28 @@
+@use "@angular/material" as mat;
+// @import '~@angular/material/prebuilt-themes/indigo-pink.css';
+
+@use "./tailwind";
+@use "./variables";
+@use "./palette" as palette;
+
+@include mat.core();
+
+// To use default Angular Material palette
+// $mepco-primary: mat.define-palette(mat.$indigo-palette, 500);
+// $mepco-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+$mepco-primary: mat.define-palette(palette.$primary-palette, 500);
+$mepco-accent: mat.define-palette(palette.$accent-palette, 500);
+
+$mepco-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $mepco-primary,
+      accent: $mepco-accent,
+    ),
+    typography: mat.define-typography-config(),
+    density: 0,
+  )
+);
+
+@include mat.all-component-themes($mepco-theme);

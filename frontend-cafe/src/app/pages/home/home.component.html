@@ -1,16 +1,15 @@
-<section >
+<section>
   <form>
     <div class="align-form-fields"></div>
     <mat-form-field>
       <mat-label>Filter by city</mat-label>
-      <input type="text" matInput
-             placeholder="Ex. Santa Fe">
+      <input type="text" matInput placeholder="Ex. Santa Fe" />
     </mat-form-field>
     <button mat-raised-button color="primary" type="button">Search</button>
   </form>
 </section>
 <section class="results">
-  <app-housing-location [housingLocation]="housingLocations"></app-housing-location>
+  <app-housing-location
+    [housingLocation]="housingLocations"
+  ></app-housing-location>
 </section>
-
-

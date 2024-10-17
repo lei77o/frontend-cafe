@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { HousingLocationComponent } from '../../components/housing-location/housing-location.component';
+import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
-import {MatButtonModule} from '@angular/material/button';
+import { HousingLocationComponent } from '../../components/housing-location/housing-location.component';
 import { HousingLocation } from '../../models/housinglocation';
 import { UnsplashService } from '../../services/unsplash.service';
 
@@ -10,15 +10,13 @@ import { UnsplashService } from '../../services/unsplash.service';
   standalone: true,
   imports: [HousingLocationComponent, MatInputModule, MatButtonModule],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.css'
+  styleUrl: './home.component.css',
 })
-export class HomeComponent implements OnInit{
-
+export class HomeComponent implements OnInit {
   readonly baseUrl = 'https://angular.dev/assets/tutorials/common';
   housingLocations: HousingLocation[] = [];
 
-  constructor(private unsplashService: UnsplashService){
-  }
+  constructor(private unsplashService: UnsplashService) {}
 
   ngOnInit(): void {
     this.loadHousePhotos();
@@ -26,19 +24,19 @@ export class HomeComponent implements OnInit{
 
   async loadHousePhotos() {
     const photos = await this.unsplashService.getHousePhotos(9);
-    console.log(photos);
-    photos.map((photo: { id: any; alt_description: any; urls: { small: any; }; }) =>{
-      this.housingLocations.push({
-        id: photo.id,
-        name: photo.alt_description,
-        city: 'Santa Fe',
-        state: 'Santa Fe',
-        photo: photo.urls.small,
-        availableUnits: 1,
-        wifi: true,
-        laundry: true,
-      })
-    })
-
+    photos.map(
+      (photo: { id: any; alt_description: any; urls: { small: any } }) => {
+        this.housingLocations.push({
+          id: photo.id,
+          name: photo.alt_description,
+          city: 'Santa Fe',
+          state: 'Santa Fe',
+          photo: photo.urls.small,
+          availableUnits: 1,
+          wifi: true,
+          laundry: true,
+        });
+      }
+    );
   }
 }
