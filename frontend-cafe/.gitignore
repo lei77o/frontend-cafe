@@ -3,7 +3,6 @@
 # Compiled output
 .env
 .env.local
-src/environments/environments.development.ts
 /dist
 /tmp
 /out-tsc

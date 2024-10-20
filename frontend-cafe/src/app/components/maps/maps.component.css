@@ -1,5 +1,15 @@
-#map {
-  width: 100vw;
-  height: 100vh;
+.map {
+  width: 45vw;
+  height: 45vh;
   background-color: gray;
+}
+
+.floating-range {
+  /* position: fixed;
+  bottom: 50px;
+  left: 50px;
+  align-items: center;
+  justify-content: right; */
+  z-index: inherit;
+  @apply shadow-slate-500 rounded-md w-1/2;
 }

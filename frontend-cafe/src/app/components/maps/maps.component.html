@@ -1,1 +1,26 @@
-<div #map></div>
+<h2 mat-dialog-title>Location</h2>
+<mat-dialog-content class="p-4">
+  <div #map class="map">
+    <!-- <div class="floating-range flex-grow"></div> -->
+  </div>
+
+  <div class="flex flex-row items-center justify-end">
+    <button mat-raised-button (click)="zoomIn()" class="mr-2">-</button>
+    <mat-slider min="0" max="18" step="1">
+      <input
+        matSliderThumb
+        [value]="zoom"
+        (input)="zoomChanged(zoomInput.value)"
+        #zoomInput
+      />
+    </mat-slider>
+    <button mat-raised-button (click)="zoomOut()" class="ml-2">+</button>
+  </div>
+  <span class="text-lg font-medium flex justify-end"
+    >Zoom: {{ zoom | number : "2.2-2" }} <br />
+    Lng, Lat{{ currentLngLat }}</span
+  >
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Ok</button>
+</mat-dialog-actions>
