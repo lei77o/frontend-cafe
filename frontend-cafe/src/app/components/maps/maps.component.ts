@@ -1,14 +1,25 @@
 import { CommonModule } from '@angular/common';
-import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  inject,
+  ViewChild,
+} from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
+import {
+  MAT_DIALOG_DATA,
   MatDialogActions,
   MatDialogClose,
   MatDialogContent,
+  MatDialogRef,
   MatDialogTitle,
 } from '@angular/material/dialog';
 import { MatSliderModule } from '@angular/material/slider';
+import { environment } from '../../../environments/environment.development';
 
-import { LngLat, Map } from 'mapbox-gl';
+import mapboxgl, { LngLat, Map, Marker } from 'mapbox-gl';
+(mapboxgl as any).accessToken = environment.NG_APP_MAPBOX_KEY;
 
 //(mapboxgl as any).accesToken = '';
 
@@ -22,27 +33,37 @@ import { LngLat, Map } from 'mapbox-gl';
     MatDialogClose,
     MatDialogContent,
     MatDialogTitle,
+    MatButtonModule,
   ],
   templateUrl: './maps.component.html',
   styleUrl: './maps.component.css',
 })
 export class MapsComponent implements AfterViewInit {
+  readonly dialogRef = inject(MatDialogRef<MapsComponent>);
+  readonly houseData = inject<LngLat>(MAT_DIALOG_DATA);
+
   @ViewChild('map') public divMap?: ElementRef;
 
+  public currentLngLat: LngLat = new LngLat(-60.6973, -31.6107);
   public zoom: number = 10;
   public map?: Map;
-  public currentLngLat: LngLat = new LngLat(60, 31);
 
   ngAfterViewInit(): void {
     if (!this.divMap) throw 'Element didnt find';
 
+    console.log(this.houseData as LngLat);
+    const copy = this.houseData as LngLat;
+
     this.map = new Map({
       container: this.divMap?.nativeElement,
       style: 'mapbox://styles/mapbox/streets-v9',
-      projection: 'globe', // Display the map as a globe, since satellite-v9 defaults to Mercator
+      projection: 'globe',
       zoom: this.zoom,
-      center: this.currentLngLat,
+      center: [-60.6973, -31.6107],
     });
+
+    if (this.houseData)
+      new Marker().setLngLat(this.currentLngLat).addTo(this.map);
   }
 
   mapListeners() {
@@ -78,5 +99,12 @@ export class MapsComponent implements AfterViewInit {
   zoomChanged(value: string) {
     this.zoom = Number(value);
     this.map?.zoomTo(this.zoom);
+  }
+
+  flyTo(marker: Marker) {
+    this.map?.flyTo({
+      zoom: 14,
+      center: marker.getLngLat(),
+    });
   }
 }

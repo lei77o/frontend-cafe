@@ -5,6 +5,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatDialog } from '@angular/material/dialog';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatIconModule } from '@angular/material/icon';
+import { LngLat } from 'mapbox-gl';
 import { MapsComponent } from '../../components/maps/maps.component';
 import { HousingLocation } from '../../models/housinglocation';
 
@@ -25,10 +26,11 @@ import { HousingLocation } from '../../models/housinglocation';
 export class HousingLocationComponent {
   @Input() housingLocation!: HousingLocation[];
   readonly dialog = inject(MatDialog);
+  public currentLngLat: LngLat = new LngLat(-60.6973, -31.6107);
 
   openLocation() {
     const dialogRef = this.dialog.open(MapsComponent, {
-      data: { latitud: '', lng: '' },
+      data: { lngLat: this.currentLngLat },
     });
   }
 }

@@ -5,7 +5,7 @@
   </div>
 
   <div class="flex flex-row items-center justify-end">
-    <button mat-raised-button (click)="zoomIn()" class="mr-2">-</button>
+    <button mat-icon-button (click)="zoomIn()" class="mr-2">-</button>
     <mat-slider min="0" max="18" step="1">
       <input
         matSliderThumb
@@ -14,13 +14,20 @@
         #zoomInput
       />
     </mat-slider>
-    <button mat-raised-button (click)="zoomOut()" class="ml-2">+</button>
+    <button mat-icon-button (click)="zoomOut()" class="ml-2">+</button>
   </div>
   <span class="text-lg font-medium flex justify-end"
     >Zoom: {{ zoom | number : "2.2-2" }} <br />
-    Lng, Lat{{ currentLngLat }}</span
+    Lng, Lat [{{ currentLngLat.lng }},{{ currentLngLat.lat }}]</span
   >
 </mat-dialog-content>
-<mat-dialog-actions>
-  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Ok</button>
+<mat-dialog-actions class="flex justify-end">
+  <button
+    mat-flat-button
+    color="primary"
+    [mat-dialog-close]="true"
+    cdkFocusInitial
+  >
+    Submit
+  </button>
 </mat-dialog-actions>
