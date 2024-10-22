@@ -26,7 +26,7 @@ export class SidenavMenuComponent {
         { name: 'User info', icon: '', url: '/signals/user-info' },
       ],
     },
-    { name: 'Forms', url: '', icon: 'description' },
+    { name: 'Forms & Directives', url: 'directives', icon: 'description' },
   ];
 
   constructor(private router: Router) {}

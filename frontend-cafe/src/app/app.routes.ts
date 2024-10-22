@@ -1,7 +1,8 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from './pages/home/home.component';
-import { ContactoComponent } from './pages/contacto/contacto.component';
 import { AcercaComponent } from './pages/acerca/acerca.component';
+import { ContactoComponent } from './pages/contacto/contacto.component';
+import { DirectivesComponent } from './pages/directives/directives.component';
+import { HomeComponent } from './pages/home/home.component';
 
 export const routes: Routes = [
   {
@@ -20,10 +21,16 @@ export const routes: Routes = [
     title: 'Acerca de',
   },
   {
-    path: 'signals',
-    loadChildren:() => import('./signals/signals.module').then(m => m.SignalsModule)
+    path: 'directives',
+    component: DirectivesComponent,
+    title: 'Forms & Directives',
   },
-  { path: '',   redirectTo: '/home', pathMatch: 'full' },
+  {
+    path: 'signals',
+    loadChildren: () =>
+      import('./signals/signals.module').then((m) => m.SignalsModule),
+  },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
 ];
 
 export default routes;
