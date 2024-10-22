@@ -1,6 +1,5 @@
 <section>
-  <form>
-    <div class="align-form-fields"></div>
+  <form class="flex flex-row items-center justify-start gap-4 my-6 px-5">
     <mat-form-field>
       <mat-label>Filter by city</mat-label>
       <input type="text" matInput placeholder="Ex. Santa Fe" />
@@ -8,7 +7,7 @@
     <button mat-raised-button color="primary" type="button">Search</button>
   </form>
 </section>
-<section class="results">
+<section class="flex-grow">
   <app-housing-location
     [housingLocation]="housingLocations"
   ></app-housing-location>

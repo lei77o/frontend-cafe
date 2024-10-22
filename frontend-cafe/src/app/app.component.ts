@@ -3,6 +3,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { RouterOutlet } from '@angular/router';
+import { SidenavMenuComponent } from './components/sidenav-menu/sidenav-menu.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 
 @Component({
@@ -14,6 +15,7 @@ import { ToolbarComponent } from './components/toolbar/toolbar.component';
     MatSidenavModule,
     MatIconModule,
     MatButtonModule,
+    SidenavMenuComponent,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',

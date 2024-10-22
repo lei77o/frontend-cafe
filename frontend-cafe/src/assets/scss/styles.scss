@@ -1,13 +1,3 @@
-.grid-container {
-  padding: 24px;
-}
-
-.responsive-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(600px, 1fr));
-  gap: 24px;
-}
-
 .cards-location {
   mat-card-title {
     color: #001219;
