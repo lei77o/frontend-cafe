@@ -1,6 +1,6 @@
 <mat-toolbar color="primary">
-    <a [routerLink]="['/']">
-      <img
+  <a [routerLink]="['/']">
+    <img
       class="brand-logo"
       src="assets/img/logo_test.png"
       alt="logo"
@@ -9,6 +9,8 @@
   </a>
   <span class="toolbar-spacer"></span>
   @for(item of menu; track item.name) {
-    <button mat-button color="custom" (click)="navigate(item)"><mat-icon>{{item.icon}}</mat-icon> {{item.name}}</button>
-    }
+  <button mat-button color="custom" (click)="navigate(item)">
+    <mat-icon>{{ item.icon }}</mat-icon> {{ item.name }}
+  </button>
+  }
 </mat-toolbar>

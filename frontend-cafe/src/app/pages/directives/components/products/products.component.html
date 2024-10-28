@@ -18,7 +18,9 @@
       </button>
     </div>
   </form>
-  <span customLabel></span>
+  <span customLabel [color]="color" [errors]="productForm.get('name')?.errors"
+    >Change your color</span
+  >
   <pre class="mt-5">
   {{ productForm.get("name")?.errors | json }}
 </pre

@@ -3,18 +3,24 @@
 >
   @for(item of menu; track item.name) {
   <button
-    mat-flat-button
+    mat-button
     color="primary"
-    class="justify-start w-full"
+    class="justify-start w-full text-light-primary-text"
     (click)="navigate(item)"
   >
     <mat-icon>{{ item.icon }}</mat-icon> {{ item.name }}
   </button>
   @if(item.subMenu){ @for(subItem of item.subMenu; track subItem.name) {
-  <a
-    class="ml-4 capitalize text-light-primary-text justify-start"
-    (click)="navigate(subItem)"
-    >{{ subItem.name }}</a
-  >
+  <div class="ml-2 w-[90%]">
+    <button
+      mat-button
+      color="primary"
+      class="justify-start w-full text-light-primary-text"
+      (click)="navigate(subItem)"
+    >
+      <mat-icon> chevron_right </mat-icon> {{ subItem.name }}
+    </button>
+  </div>
+
   } } }
 </div>

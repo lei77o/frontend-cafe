@@ -34,7 +34,12 @@ export class ProductsComponent {
   public productForm: FormGroup = this.fb.group({
     name: [
       '',
-      [Validators.required, Validators.minLength(6), Validators.maxLength(10)],
+      [
+        Validators.required,
+        Validators.email,
+        Validators.minLength(6),
+        Validators.maxLength(50),
+      ],
     ],
   });
 

@@ -4,21 +4,22 @@ mat-toolbar {
   flex: 1 1 auto;
   background-color: #000000;
   height: 64px;
-  box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
+  z-index: 9999 !important;
+  @apply shadow-lg;
 }
 
 .toolbar-spacer {
   flex: 1 1 auto;
 }
-mat-icon{
-  color: #E5E5E5;
+mat-icon {
+  color: #e5e5e5;
 }
 
-.mat-custom{
-  color: #E5E5E5 !important;
+.mat-custom {
+  color: #e5e5e5 !important;
 }
 
-.brand-logo{
+.brand-logo {
   padding-top: 0.5rem;
   height: 60px;
 }
