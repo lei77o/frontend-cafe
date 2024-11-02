@@ -1,3 +1,36 @@
-<div class="flex flex-col gap-4">
-  <p class="mat-label">User:</p>
+<div class="p-4">
+  <h4 class="title">Users</h4>
+  <hr />
+  <div class="flex flex-col">
+    <p class="sub-title">User ID: {{ userId() }}</p>
+    <div class="flex flex-row items-center justify-start gap-4">
+      <button
+        (click)="loadUser(userId() - 1)"
+        mat-raised-button
+        color="primary"
+      >
+        Previous
+      </button>
+      <button
+        (click)="loadUser(userId() + 1)"
+        mat-raised-button
+        color="primary"
+      >
+        Next
+      </button>
+    </div>
+
+    @if(currentUser()){
+    <div class="col-span-1 items-start justify-start gap-4">
+      <p class="sub-title">User details</p>
+      <p>Email: {{ currentUser()?.email }}</p>
+      <p>Name:{{ fullName() }}</p>
+      <img [src]="currentUser()?.avatar" class="rounded-md" />
+    </div>
+    }
+  </div>
+
+  @if(userFound()){
+  <span class="text-red-500 text-sm">User not found</span>
+  }
 </div>

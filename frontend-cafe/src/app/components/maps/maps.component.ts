@@ -50,8 +50,6 @@ export class MapsComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
     if (!this.divMap) throw 'Element didnt find';
-
-    console.log(this.houseData as LngLat);
     const copy = this.houseData as LngLat;
 
     this.map = new Map({

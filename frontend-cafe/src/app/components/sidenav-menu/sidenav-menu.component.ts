@@ -21,7 +21,7 @@ export class SidenavMenuComponent {
       icon: 'sensors',
       subMenu: [
         { name: 'Counter', icon: '', url: '/signals/counter' },
-        { name: 'properties', icon: '', url: '/signals/properties' },
+        { name: 'Properties', icon: '', url: '/signals/properties' },
         { name: 'User info', icon: '', url: '/signals/user-info' },
       ],
     },

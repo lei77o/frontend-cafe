@@ -1,1 +1,38 @@
-<p>properties-page works!</p>
+<div class="p-4">
+  <h4 class="title">Properties</h4>
+  <hr />
+  <div class="grid grid-cols-1 gap-3 p-4">
+    <mat-form-field class="mb-2">
+      <mat-label>Email</mat-label>
+      <input
+        matInput
+        #textEmail
+        type="text"
+        (input)="onFieldUpload('email', textEmail.value)"
+        [value]="user().email"
+      />
+    </mat-form-field>
+    <mat-form-field class="mb-2">
+      <mat-label>First Name</mat-label>
+      <input
+        matInput
+        #textFirstName
+        type="text"
+        (input)="onFieldUpload('first_name', textFirstName.value)"
+        [value]="user().first_name"
+      />
+    </mat-form-field>
+    <mat-form-field class="mb-2">
+      <mat-label>Last Name</mat-label>
+      <input
+        matInput
+        #textLastName
+        type="text"
+        (input)="onFieldUpload('last_name', textLastName.value)"
+        [value]="user().last_name"
+      />
+    </mat-form-field>
+    <p class="sub-title">Full Name:</p>
+    <p>{{ fullName() }}</p>
+  </div>
+</div>
