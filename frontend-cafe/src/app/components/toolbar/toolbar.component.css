@@ -2,7 +2,7 @@ mat-toolbar {
   display: flex;
   justify-content: start;
   flex: 1 1 auto;
-  background-color: #000000;
+  background-color: var(--dark-primary-text);
   height: 64px;
   z-index: 9999 !important;
   @apply shadow-lg;
@@ -12,11 +12,11 @@ mat-toolbar {
   flex: 1 1 auto;
 }
 mat-icon {
-  color: #e5e5e5;
+  color: var(--gray-300);
 }
 
 .mat-custom {
-  color: #e5e5e5 !important;
+  color: var(--gray-300) !important;
 }
 
 .brand-logo {

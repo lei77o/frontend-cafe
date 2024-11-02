@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, input } from '@angular/core';
+import { Component, input, signal } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { Router } from '@angular/router';
@@ -13,8 +13,7 @@ import { MenuOption } from '../../models/menu-items';
 })
 export class SidenavMenuComponent {
   items = input<MenuOption[]>();
-
-  menu: MenuOption[] = [
+  public menuItems = signal<MenuOption[]>([
     { name: 'Properties', url: 'home', icon: 'house' },
     {
       name: 'Signals',
@@ -27,7 +26,7 @@ export class SidenavMenuComponent {
       ],
     },
     { name: 'Forms & Directives', url: 'directives', icon: 'description' },
-  ];
+  ]);
 
   constructor(private router: Router) {}
 
