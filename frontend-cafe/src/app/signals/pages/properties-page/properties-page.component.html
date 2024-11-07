@@ -35,4 +35,11 @@
     <p class="sub-title">Full Name:</p>
     <p>{{ fullName() }}</p>
   </div>
+
+  <div>
+    <pre> {{user() | json}}</pre>
+    {{ fullName() }}
+
+    <button mat-raised-button  color="primary" (click)="increaseBy(+1)">+ 1</button>
+  </div>
 </div>

@@ -16,7 +16,9 @@ export class UserInfoPageComponent implements OnInit{
   public userId = signal(1);
 
   public currentUser = signal<User | undefined>(undefined);
+  
   public userFound = signal(true);
+  
   public fullName = computed<string>(()=>{
     if(!this.currentUser()) return 'User not found';
     return `${this.currentUser()?.first_name}, ${this.currentUser()?.last_name}`
