@@ -1,5 +1,12 @@
 import { CommonModule } from '@angular/common';
-import { Component, computed, effect, OnDestroy, OnInit, signal } from '@angular/core';
+import {
+  Component,
+  computed,
+  effect,
+  OnDestroy,
+  OnInit,
+  signal,
+} from '@angular/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { User } from '../../../models/user.interface';
@@ -27,9 +34,9 @@ export class PropertiesPageComponent implements OnDestroy, OnInit {
 
   public counter = signal(10);
 
-  public userChangedEffect = effect(()=>{
-    console.log(`${this.user().first_name} - ${this.counter()}`)
-  })
+  public userChangedEffect = effect(() => {
+    console.log(`${this.user().first_name} - ${this.counter()}`);
+  });
 
   onFieldUpload(field: keyof User, value: string) {
     this.user.update((current) => {
@@ -55,19 +62,18 @@ export class PropertiesPageComponent implements OnDestroy, OnInit {
     });
   }
 
-  increaseBy(value: number){
-    this.counter.update(current => current + value)
+  increaseBy(value: number) {
+    this.counter.update((current) => current + value);
   }
 
   ngOnInit(): void {
-      setInterval(()=>{
-        this.counter.update(current => current + 1);
-        if(this.counter() === 15)
-          this.userChangedEffect.destroy();
-      }, 1000)
+    setInterval(() => {
+      this.counter.update((current) => current + 1);
+      if (this.counter() === 15) this.userChangedEffect.destroy();
+    }, 1000);
   }
 
   ngOnDestroy(): void {
-      this.userChangedEffect.destroy();
+    this.userChangedEffect.destroy();
   }
 }

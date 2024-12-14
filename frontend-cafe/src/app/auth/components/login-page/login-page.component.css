@@ -1,0 +1,24 @@
+.login-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(
+      135deg,
+      rgba(0, 0, 0, 0.8),
+      rgba(255, 165, 0, 0.6)
+    ),
+    url("/assets/images/login-background.jpg"); /* Replace with your actual image */
+  background-size: cover;
+  background-position: center;
+  color: white; /* Text color for contrast */
+}
+
+.login-card {
+  background-color: rgba(255, 255, 255, 0.9); /* Slight transparency for card */
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  max-width: 400px;
+  width: 100%;
+}
