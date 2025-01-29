@@ -1,8 +1,9 @@
-import { HttpClient } from '@angular/common/http';
-import { inject, Injectable, signal } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { computed, inject, Injectable, signal } from '@angular/core';
+import { catchError, map, Observable, of, throwError } from 'rxjs';
 import { environment } from '../../../environments/environment.development';
-import { User } from '../../models/user.interface';
+import { User } from '../../auth/interfaces/user.interface';
+import { AuthStatus, CheckTokenResponse, LoginResponse } from '../interfaces';
 
 @Injectable({
   providedIn: 'root',
@@ -11,12 +12,51 @@ export class AuthService {
   private readonly baseUrl = environment.BASE_URL;
   private http = inject(HttpClient);
 
-  private currentUser = signal<User | null>(null);
-  private authStatus = signal<AuthSatus>();
+  private _currentUser = signal<User | null>(null);
+  private _authStatus = signal<AuthStatus>(AuthStatus.checking);
 
-  constructor() {}
+  public currentUser = computed(() => this._currentUser());
+  public authStatus = computed(() => this._authStatus());
+
+  private setAuthentication(user: User, token: string): boolean {
+    this._currentUser.set(user);
+    this._authStatus.set(AuthStatus.authenticated);
+    localStorage.setItem('token', token);
+
+    return true;
+  }
+
+  constructor() {
+    this.checkStatus().subscribe();
+  }
 
   login(email: string, password: string): Observable<boolean> {
-    return of(true);
+    const url = `${this.baseUrl}/auth/login`;
+    const body = { email, password };
+    return this.http.post<LoginResponse>(url, body).pipe(
+      map(({ user, token }) => {
+        this.setAuthentication(user, token);
+      }),
+      catchError((error) => throwError(() => error.error.message))
+    );
+  }
+
+  checkStatus(): Observable<boolean> {
+    const url = `${this.baseUrl}/auth/check-token`;
+    const token = localStorage.getItem('token');
+
+    if (!token) return of(false);
+
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+
+    return this.http.get<CheckTokenResponse>(url, { headers }).pipe(
+      map(({ token, user }) => {
+        this.setAuthentication(user, token);
+      }),
+      catchError(() => {
+        this._authStatus.set(AuthStatus.notAuthenticated);
+        return of(false);
+      })
+    );
   }
 }

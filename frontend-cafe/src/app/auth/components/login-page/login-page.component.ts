@@ -5,6 +5,9 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login-page',
@@ -15,11 +18,21 @@ import {
 })
 export class LoginPageComponent {
   private fb = inject(FormBuilder);
+  private loginService = inject(AuthService);
+  private router = inject(Router);
 
   public loginForm: FormGroup = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required, Validators.minLength(6)]],
   });
 
-  login() {}
+  login() {
+    const { email, password } = this.loginForm.value;
+    this.loginService.login(email, password).subscribe({
+      next: () => console.log('success'),
+      error: (error) => {
+        Swal.fire('Error', error, 'error');
+      },
+    });
+  }
 }

@@ -1,0 +1,9 @@
+<app-toolbar></app-toolbar>
+<mat-sidenav-container autosize>
+  <mat-sidenav mode="side" opened>
+    <sidenav-menu></sidenav-menu>
+  </mat-sidenav>
+  <mat-sidenav-content class="min-h-screen">
+    <router-outlet #sidenav></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

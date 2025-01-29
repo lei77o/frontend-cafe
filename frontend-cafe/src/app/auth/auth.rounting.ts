@@ -1,16 +1,16 @@
 import { Routes } from '@angular/router';
+import { isAuthenticatedGuard } from './guards/isAuthenticaded.guard';
 
 const routes: Routes = [
   {
     path: 'auth',
-    //Todo guards
     loadChildren: () => import('./auth.module').then((m) => m.AuthModule),
   },
   {
     path: 'dashboard',
-    //Todo guards
+    canActivate: [isAuthenticatedGuard],
     loadChildren: () =>
-      import('./dashboard/dashboard.module').then((m) => m.DashboardModule),
+      import('../dashboard/dashboard.module').then((m) => m.DashboardModule),
   },
   {
     path: '**',
